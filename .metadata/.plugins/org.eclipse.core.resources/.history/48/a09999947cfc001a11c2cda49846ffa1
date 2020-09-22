@@ -1,0 +1,93 @@
+package pageObjects;
+
+import static org.junit.Assert.assertEquals;
+
+import java.io.IOException;
+import java.util.concurrent.TimeUnit;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+
+import cucumber.api.java.After;
+import cucumber.api.java.Before;
+import cucumber.api.java.en.Given;
+import cucumber.api.java.en.Then;
+import cucumber.api.java.en.When;
+
+public class FillFormFAP {
+	
+	
+	public static WebDriver driver = null;
+	String url = "http://ww2.soc.com.br/";
+
+	@Before
+	public void initialize() throws IOException {
+		System.setProperty("webdriver.chrome.driver", ".\\src\\test\\resources\\driver\\chrome\\85\\chromedriver.exe");
+		driver = new ChromeDriver();
+		driver.manage().window().maximize();
+		driver.manage().timeouts().implicitlyWait(50000, TimeUnit.MILLISECONDS);
+		driver.get(url);
+	}
+
+	@After
+	public void terminate() {
+
+		driver.quit();
+	}
+	
+	@Given("^I see the aceitar cookies button$")
+	public void i_see_the_aceitar_cookies_button() {
+		String btnAceitarCookiesEsperado = "Aceitar cookies";
+		String btnAceitarCookies = driver.findElement(By.id("barra-cookie")).getText();
+		assertEquals(btnAceitarCookiesEsperado, btnAceitarCookies);
+
+	}
+
+	@When("^I click on it$")
+	public void i_click_on_it()  {
+		Boolean btnAceitar = driver.findElement(By.id("barra-cookie")).isDisplayed();
+		assertEquals(btnAceitar, true);
+		driver.findElement(By.id("barra-cookie")).click();
+	}
+
+	@Then("^the button hidden$")
+	public void the_button_hidden()  {
+		Boolean btnAceitarhidden = driver.findElement(By.id("barra-cookie")).isDisplayed();
+		assertEquals(btnAceitarhidden, false);
+	}
+
+	@Given("^I am in the main page$")
+	public void i_am_in_the_main_page()  {
+		String paginaInicial = driver.getTitle();
+		assertEquals("Software de Medicina do Trabalho - SOC", paginaInicial);
+		System.out.println("Step 1 - Visit SOC's page");
+
+	}
+	
+	@Given("^I fill the getCalc$")
+	public void i_fill_the_getCalc()  {
+		driver.findElement(By.id("nomeEmpresa")).sendKeys("Empresa");
+		driver.findElement(By.id("fap")).sendKeys("10");
+		driver.findElement(By.id("projecao")).sendKeys("3");
+	}
+
+	@When("^I click to Estimular$")
+	public void i_click_to_Estimular()  {
+		WebElement btnEstimar = driver.findElement(By.id("estimar"));
+		//assertEquals(btnEstimar.getAttribute("value"), "Estimar FAP");
+		System.out.println(btnEstimar.getAttribute("value"));
+		
+		
+		driver.findElement(By.id("estimar")).click();
+	    
+	}
+
+	@Then("^I see the report$")
+	public void i_see_the_report() throws Throwable {
+	  
+	}
+
+
+}

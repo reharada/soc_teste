@@ -1,0 +1,20 @@
+
+#Author: regiane.ha@gmail.com
+#Scenario: Search elements in main page.
+@fill
+Feature: Fill Form FAP
+
+	Background: Go to the Form FAP
+	Given I see the aceitar cookies button
+	When I click on it
+	Then the button hidden
+	Given I am in the main page
+  Then I click on FAP
+
+  @fillFormFAP
+  Scenario: Fill Form FAP successful
+  Given I fill the getCalc
+  When I click to Estimular
+  Then I see the report
+    
+

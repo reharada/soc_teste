@@ -1,0 +1,70 @@
+package pageObjects;
+
+import pageObjects.Busca;
+import static org.junit.Assert.assertEquals;
+
+import java.io.IOException;
+import java.util.concurrent.TimeUnit;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+
+import cucumber.api.java.After;
+import cucumber.api.java.Before;
+import cucumber.api.java.en.Given;
+import cucumber.api.java.en.Then;
+import cucumber.api.java.en.When;
+
+public class FillFormFAP {
+	
+	public Busca busca = new Busca();
+
+	public FillFormFAP() throws IOException{
+		
+		this.busca.initialize();
+		this.busca.terminate();
+		this.busca.i_click_on_it();
+		this.busca.the_button_hidden();
+		this.busca.i_am_in_the_main_page();
+
+	}
+	
+	public static WebDriver driver = null;
+	String url = "http://ww2.soc.com.br/";
+
+	
+	@Then("^I click FAP")
+	public void i_click_FAP()  {
+		WebElement btnFAP = driver.findElement(By.cssSelector("ul:nth-child(2) > li:nth-child(4) abbr"));
+		assertEquals(btnFAP.getText(),"FAP");
+		//System.out.println(btnFAP.getText() + " eh FAP");
+		btnFAP.click();
+	}
+	
+	@Given("^I fill the getCalc$")
+	public void i_fill_the_getCalc()  {
+		driver.findElement(By.id("nomeEmpresa")).sendKeys("Empresa");
+		driver.findElement(By.id("fap")).sendKeys("10");
+		driver.findElement(By.id("projecao")).sendKeys("3");
+	}
+
+	@When("^I click to Estimular$")
+	public void i_click_to_Estimular()  {
+		WebElement btnEstimar = driver.findElement(By.id("estimar"));
+		//assertEquals(btnEstimar.getAttribute("value"), "Estimar FAP");
+		System.out.println(btnEstimar.getAttribute("value"));
+		
+		
+		driver.findElement(By.id("estimar")).click();
+	    
+	}
+
+	@Then("^I see the report$")
+	public void i_see_the_report() throws Throwable {
+	  
+	}
+
+
+}

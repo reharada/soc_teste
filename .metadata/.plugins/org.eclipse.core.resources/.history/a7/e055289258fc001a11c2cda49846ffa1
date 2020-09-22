@@ -1,0 +1,48 @@
+package test;
+
+import java.io.IOException;
+import java.util.concurrent.TimeUnit;
+
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+
+import cucumber.api.java.After;
+import cucumber.api.java.Before;
+
+public class TestPage {
+	
+	public static WebDriver driver = null;
+	
+	@Before
+	public void initialize() throws IOException{
+		System.setProperty("webdriver.chrome.driver", "./chromedriver.exe");
+		
+		driver = new ChromeDriver();
+		
+		driver.manage().window().maximize();
+		
+		driver.manage().timeouts().implicitlyWait(5000, TimeUnit.MICROSECONDS);
+		
+		driver.get("http://ww2.soc.com.br/");
+	}
+	
+	@After
+	public void terminate() {
+		
+		TestPage.driver.quit();
+	}
+	
+	
+		
+		
+		
+		
+		
+		
+		
+	}
+	
+
+
+
+}

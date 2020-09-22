@@ -1,0 +1,24 @@
+#Author: regiane.ha@gmail.com
+#Scenario: Search elements in main page.
+@tag
+Feature: Seacrh in main page
+
+  @tag1
+  Scenario: Find word FAP in main page
+    Given I am in the main page
+    And Soluções e Recursos is visible
+    When I put the cursor on it
+    And I click on FAP
+    Then I go to FAP page
+    And the url changed
+
+  @tag2
+  Scenario Outline: Correct links in the main page
+    Given I want to go to another pages <name>
+    When I click on the link in page
+    Then I verify the url changed
+
+    Examples: 
+      | name    |
+      | socnet  |
+      | esocial |
