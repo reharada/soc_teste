@@ -1,14 +1,19 @@
 
 #Author: regiane.ha@gmail.com
-#Scenario: Search elements in main page.
-@fill
-Feature: Fill Form FAP
 
-  @fillFormFAP
-  Scenario: Fill Form FAP successful
-  Given I am FAP Page
-  Given I fill the getCalc
-  When I click to Estimular
-  Then I see the report
-    
+@searchInMain
+Feature: Search in main page
 
+	Background: Accepted Cookies
+	Given I see the aceitar cookies button
+	When I click on it
+	Then the button hidden
+
+
+  @scenarioFindFAP
+  Scenario: Find word FAP in main page
+    Given I am in the main page
+    And Solucoes e Recursos is visible
+    When I put the cursor on it
+    And I click on FAP
+    Then I go to FAP page

@@ -1,0 +1,120 @@
+package pageObjectsPage;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
+
+
+public class BuscaPage {
+	protected static WebDriver driver;
+	
+	private By barraCookie_obtido = By.id("barra-cookie");
+	private String btnAceitarCookiesEsperado = "Aceitar cookies";
+	
+	private By btnAceitar = By.id("barra-cookie");
+	
+	//private String titlePage = driver.getTitle();
+	private String titlePageEsperada = "Software de Medicina do Trabalho - SOC";
+	
+	private By solucoesRecursosMenu = By.cssSelector("#navegacao-superior .mostra-submenu");
+	
+	
+	private By popoverSubmenu = By.cssSelector(".popover-submenu");
+	
+	private By mostraSubMenu = By.cssSelector("#navegacao-superior .mostra-submenu");
+	
+	private By clickFAP = By.cssSelector("ul:nth-child(2) > li:nth-child(4) abbr");
+	String textFAP = "FAP";
+	
+	private String redirectFAP;
+	
+	public BuscaPage(WebDriver driver) {
+		this.driver = driver;
+		this.redirectFAP = driver.getCurrentUrl();
+	}
+	
+
+	public void buscaFAP() {
+		//String barraCookie_obtidoText = driver.findElement(barraCookie_obtido).getText();
+		//assertEquals(btnAceitarCookiesEsperado, btnAceitarCookies);
+		
+		//Boolean btnAceitarBool = driver.findElement(btnAceitar).isDisplayed();
+		//assertEquals(btnAceitar, true);
+		driver.findElement(getBtnAceitar()).click();
+		
+		//Boolean btnAceitarhiddenBool = driver.findElement(btnAceitar).isDisplayed();
+		//assertEquals(btnAceitarhidden, false);
+			
+		//assertEquals(titlePageEsperada, titlePage);
+		
+		//Boolean solucoesRecursosMenuBool = driver.findElement(getSolucoesRecursosMenu()).isDisplayed();
+		//assertEquals(solucoesRecursosMenuBool, true);
+		
+		Boolean popoverSubmenuBool = driver.findElement(getPopoverSubmenu()).isDisplayed();
+		Actions builder = new Actions(driver);
+		
+		
+		Boolean menuSolucoesAppear = driver.findElement(getPopoverSubmenu()).isDisplayed();
+		//assertEquals(menuSolucoesAppear, true);
+		
+		//assertEquals(btnFAP.getText(),"FAP");
+		WebElement clickFAPElement = driver.findElement(getClickFAP());
+		//assertEquals(clickFAPElement.getText(),"FAP");
+		clickFAPElement.click();
+		
+		//assertEquals(redirectFAP,"https://ww2.soc.com.br/fap/");
+	}
+
+	public void btnAceitarClick() {
+		driver.findElement(getBtnAceitar()).click();
+	}
+	
+	public void popoverSubmenuMoveTo() {
+		WebElement elementMove = driver.findElement(getSolucoesRecursosMenu());
+		Actions builder = new Actions(driver);
+		builder.moveToElement(elementMove).perform();
+	}
+	
+	public void fapElementClick() {
+		driver.findElement(clickFAP).click();
+	}
+	
+
+	public String getBtnAceitarCookiesEsperado() {
+		return btnAceitarCookiesEsperado;
+	}
+
+
+	public By getBtnAceitar() {
+		return btnAceitar;
+	}
+
+
+	public By getSolucoesRecursosMenu() {
+		return solucoesRecursosMenu;
+	}
+
+
+	public By getPopoverSubmenu() {
+		return popoverSubmenu;
+	}
+
+
+	public By getMostraSubMenu() {
+		return mostraSubMenu;
+	}
+
+
+	public By getClickFAP() {
+		return clickFAP;
+	}
+
+
+	public By getBarraCookie_obtido() {
+		return barraCookie_obtido;
+	}
+	
+}
+
+

@@ -1,0 +1,6 @@
+
+Feature: Search in main page
+ Scenario: Find word FAP in main page
+ Given I see the aceitar cookies button
+ When I click on it
+ Then the button hidden

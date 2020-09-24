@@ -1,0 +1,52 @@
+package pageObjects;
+
+import static org.junit.Assert.assertEquals;
+
+import java.io.IOException;
+import java.util.concurrent.TimeUnit;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.interactions.Actions;
+
+import cucumber.api.java.After;
+import cucumber.api.java.Before;
+import cucumber.api.java.en.Given;
+import cucumber.api.java.en.Then;
+import cucumber.api.java.en.When;
+import pageObjectsPage.BuscaPage;
+import pageObjectsPage.HomePage;
+
+public class NovoBuscaPOM {
+
+	HomePage homePage;
+	BuscaPage buscaPage;
+
+	public static WebDriver driver = new ChromeDriver();
+	String url = "http://ww2.soc.com.br/";
+
+	@Before
+	public void initialize() throws IOException {
+		System.setProperty("webdriver.chrome.driver", ".\\src\\test\\resources\\driver\\chrome\\85\\chromedriver.exe");
+		if (driver == null) {
+		    driver = new ChromeDriver();
+		}
+		driver.manage().window().maximize();
+		driver.manage().timeouts().implicitlyWait(50000, TimeUnit.MILLISECONDS);
+		driver.get(url);
+	}
+
+	@After
+	public void terminate() {
+
+		driver.quit();
+	}
+
+	@Given("^I see the aceitar cookies button$")
+	public void i_see_the_aceitar_cookies_button() {
+		System.out.println("Mostrar a string aqui");
+		System.out.println(homePage.getBarraCookieText());
+	}
+}

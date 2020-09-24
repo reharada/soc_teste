@@ -1,0 +1,82 @@
+package pageObjectsPage;
+
+import HomePage.java;
+
+import static org.junit.Assert.assertEquals;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
+
+import cucumber.api.java.en.Given;
+import cucumber.api.java.en.Then;
+import cucumber.api.java.en.When;
+
+public class BuscaPage {
+	protected static WebDriver driver;
+	
+	private By barraCookie_obtido = By.id("barra-cookie");
+	private String btnAceitarCookiesEsperado = "Aceitar cookies";
+	
+	private By btnAceitar = By.id("barra-cookie");
+	
+	//private String titlePage = driver.getTitle();
+	private String titlePageEsperada = "Software de Medicina do Trabalho - SOC";
+	
+	private By solucoesRecursosMenu = By.cssSelector("#navegacao-superior .mostra-submenu");
+	WebElement element = driver.findElement(solucoesRecursosMenu);
+	
+	private By popoverSubmenu = By.cssSelector(".popover-submenu");
+	
+	private By mostraSubMenu = By.cssSelector("#navegacao-superior .mostra-submenu");
+	
+	private By clickFAP = By.cssSelector("ul:nth-child(2) > li:nth-child(4) abbr");
+	String textFAP = "FAP";
+	
+	private String redirectFAP = driver.getCurrentUrl();
+	
+	public BuscaPage(WebDriver driver) {
+		this.driver = driver;
+	}
+	
+
+	public HomePage buscaFAP() {
+		//String barraCookie_obtidoText = driver.findElement(barraCookie_obtido).getText();
+		//assertEquals(btnAceitarCookiesEsperado, btnAceitarCookies);
+		
+		//Boolean btnAceitarBool = driver.findElement(btnAceitar).isDisplayed();
+		//assertEquals(btnAceitar, true);
+		driver.findElement(btnAceitar).click();
+		
+		//Boolean btnAceitarhiddenBool = driver.findElement(btnAceitar).isDisplayed();
+		//assertEquals(btnAceitarhidden, false);
+			
+		//assertEquals(titlePageEsperada, titlePage);
+		
+		Boolean solucoesRecursosMenuBool = driver.findElement(solucoesRecursosMenu).isDisplayed();
+		//assertEquals(solucoesRecursosMenuBool, true);
+		
+		Boolean popoverSubmenuBool = driver.findElement(popoverSubmenu).isDisplayed();
+		Actions builder = new Actions(driver);
+		builder.moveToElement(element).perform();
+		
+		Boolean menuSolucoesAppear = driver.findElement(popoverSubmenu).isDisplayed();
+		//assertEquals(menuSolucoesAppear, true);
+		
+		//assertEquals(btnFAP.getText(),"FAP");
+		WebElement clickFAPElement = driver.findElement(clickFAP);
+		//assertEquals(clickFAPElement.getText(),"FAP");
+		clickFAPElement.click();
+		
+		//assertEquals(redirectFAP,"https://ww2.soc.com.br/fap/");
+	}
+
+
+	public String getBtnAceitarCookiesEsperado() {
+		return btnAceitarCookiesEsperado;
+	}
+	
+}
+
+/**

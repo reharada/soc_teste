@@ -1,0 +1,58 @@
+package pageObjectsPage;
+
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+
+public class HomePage {
+	protected static WebDriver driver;
+
+	public HomePage(WebDriver driver) {
+		this.driver = driver;
+		if (!driver.getTitle().equals("Software de Medicina do Trabalho - SOC")) {
+			throw new IllegalStateException("This is not Home Page" + " current page is: " + driver.getCurrentUrl());
+		}
+	}
+	
+	BuscaPage buscaPage;
+	
+	
+	
+	public String getTitleBuscaPage() {
+		return driver.getTitle();
+	}
+	
+	public String getBarraCookieText() {
+		return ((WebElement) driver.findElements(buscaPage.getBarraCookie_obtido())).getText();
+	}
+	
+	public Boolean getBtnAceitarBool() {
+		return driver.findElement(buscaPage.getBtnAceitar()).isDisplayed();
+	}
+	
+	public Boolean getBtnAceitarhiddenBool() {
+		return driver.findElement(buscaPage.getBtnAceitar()).isDisplayed();
+	}
+	
+	public Boolean getSolucoesRecursosMenuBool() {
+		return driver.findElement(buscaPage.getSolucoesRecursosMenu()).isDisplayed();
+	}
+	
+	public Boolean getPopoverSubmenuBool() {
+		return driver.findElement(buscaPage.getPopoverSubmenu()).isDisplayed();
+	}
+	
+	public Boolean getMenuSolucoesAppearBool() {
+		return driver.findElement(buscaPage.getMostraSubMenu()).isDisplayed(); 
+	}
+	
+	public String getClickFAPText() {
+		return driver.findElement(buscaPage.getClickFAP()).getText();
+	}
+	
+	public String getRedirectFAPtext() {
+		return driver.getCurrentUrl();
+	}
+	
+	
+}
+

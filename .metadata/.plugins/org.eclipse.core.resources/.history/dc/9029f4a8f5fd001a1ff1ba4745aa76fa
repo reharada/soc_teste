@@ -1,0 +1,136 @@
+package pageObjectsPage;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
+
+
+public class BuscaPage {
+	protected static WebDriver driver;
+	
+	private String btnAceitarCookiesEsperado = "Aceitar cookies";
+	private By btnAceitar = By.id("barra-cookie");
+	private String titlePageEsperada = "Software de Medicina do Trabalho - SOC";
+	private By solucoesRecursosMenu = By.cssSelector("#navegacao-superior .mostra-submenu");
+	private By popoverSubmenu = By.cssSelector(".popover-submenu");
+	private By mostraSubMenu = By.cssSelector("#navegacao-superior .mostra-submenu");
+	private By clickFAP = By.cssSelector("ul:nth-child(2) > li:nth-child(4) abbr");
+	String textFAP = "FAP";
+	private String redirectFAP;
+	public BuscaPage(WebDriver driver) {
+		this.driver = driver;
+		this.redirectFAP = driver.getCurrentUrl();
+	}
+	
+	
+	public void buscaFAP() {
+		//String barraCookie_obtidoText = driver.findElement(barraCookie_obtido).getText();
+		//assertEquals(btnAceitarCookiesEsperado, btnAceitarCookies);	
+		//Boolean btnAceitarBool = driver.findElement(btnAceitar).isDisplayed();
+		//assertEquals(btnAceitar, true)
+		//Boolean btnAceitarhiddenBool = driver.findElement(btnAceitar).isDisplayed();
+		//assertEquals(btnAceitarhidden, false);
+		//assertEquals(titlePageEsperada, titlePage);
+		//Boolean solucoesRecursosMenuBool = driver.findElement(getSolucoesRecursosMenu()).isDisplayed();
+		//assertEquals(solucoesRecursosMenuBool, true);
+		Boolean popoverSubmenuBool = driver.findElement(getPopoverSubmenu()).isDisplayed();
+		Actions builder = new Actions(driver);
+		Boolean menuSolucoesAppear = driver.findElement(getPopoverSubmenu()).isDisplayed();
+		//assertEquals(menuSolucoesAppear, true);
+		//assertEquals(btnFAP.getText(),"FAP");
+		WebElement clickFAPElement = driver.findElement(getClickFAP());
+		//assertEquals(clickFAPElement.getText(),"FAP");
+		clickFAPElement.click();
+		//assertEquals(redirectFAP,"https://ww2.soc.com.br/fap/");
+	}
+
+	public void btnAceitarClick() {
+		driver.findElement(getBtnAceitar()).click();
+	}
+	
+	public void popoverSubmenuMoveTo() {
+		WebElement elementMove = driver.findElement(getSolucoesRecursosMenu());
+		Actions builder = new Actions(driver);
+		builder.moveToElement(elementMove).perform();
+	}
+	
+	public void fapElementClick() {
+		driver.findElement(clickFAP).click();
+	}
+
+	public String getBtnAceitarCookiesEsperado() {
+		return btnAceitarCookiesEsperado;
+	}
+
+	public By getBtnAceitar() {
+		return btnAceitar;
+	}
+
+	public By getSolucoesRecursosMenu() {
+		return solucoesRecursosMenu;
+	}
+
+	public By getPopoverSubmenu() {
+		return popoverSubmenu;
+	}
+
+	public By getMostraSubMenu() {
+		return mostraSubMenu;
+	}
+
+	public By getClickFAP() {
+		return clickFAP;
+	}
+
+	public void HomePage(WebDriver driver) {
+		HomePage.driver = driver;
+		if (!driver.getTitle().equals(titlePageEsperada)) {
+			throw new IllegalStateException("This is not Home Page" + " current page is: " + driver.getCurrentUrl());
+		}
+	}
+	
+	public String getTitleBuscaPage() {
+		return driver.getTitle();
+	}
+	
+	public String getBarraCookieText() {
+		String txt = driver.findElement(getBtnAceitar()).getText();
+		//String txt = ((WebElement) driver.findElements(buscaPage.getBarraCookie_obtido())).getText();
+		return txt;
+		
+	}
+	
+	public Boolean getBtnAceitarBool() {
+		return driver.findElement(getBtnAceitar()).isDisplayed();
+	}
+	
+	public Boolean getBtnAceitarhiddenBool() {
+		return driver.findElement(getBtnAceitar()).isDisplayed();
+	}
+	
+	public Boolean getSolucoesRecursosMenuBool() {
+		return driver.findElement(getSolucoesRecursosMenu()).isDisplayed();
+	}
+	
+	public Boolean getPopoverSubmenuBool() {
+		return driver.findElement(getPopoverSubmenu()).isDisplayed();
+	}
+	
+	public Boolean getMenuSolucoesAppearBool() {
+		return driver.findElement(getMostraSubMenu()).isDisplayed(); 
+	}
+	
+	public String getClickFAPText() {
+		return driver.findElement(getClickFAP()).getText();
+	}
+	
+	public String getRedirectFAPtext() {
+		return driver.getCurrentUrl();
+	}
+	
+	
+	
+}
+
+
