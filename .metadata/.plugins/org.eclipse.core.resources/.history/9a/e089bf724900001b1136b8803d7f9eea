@@ -1,0 +1,25 @@
+package screenplay.questions;
+
+import screenplay.models.Actor;
+import screenplay.models.Question;
+import org.openqa.selenium.WebDriver;
+
+public class TheTitlePage implements Question {
+
+	protected static WebDriver driver;
+	String pageNameEsperado ="FAP - SOC - Software Integrado de Gestão Ocupacional" ;
+	
+	public TheTitlePage(WebDriver driver) {
+		this.driver = driver;
+	}
+	
+	public String WhatPageNameIs(WebDriver driver) {
+		return driver.getTitle();
+	}
+	
+	@Override
+	public void ask(final WebDriver driver, final Actor actor) {
+		driver.getTitle();
+	}
+
+}

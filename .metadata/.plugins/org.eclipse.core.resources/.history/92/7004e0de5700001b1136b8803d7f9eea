@@ -1,0 +1,18 @@
+package screenplay.questions;
+
+public class TheFAPFormTitle implements Question {
+	
+    String[] todoItems;
+
+    TheTodoListContents(String... todoItems) {
+        this.todoItems = todoItems;
+    }
+
+    @Override
+    public void ask(final WebDriver driver, final Actor actor) {
+        List<String> todos = new ArrayList<>();
+        driver.findElements(TODO_LIST.locator()).forEach(item -> todos.add(item.getText()));
+        assertThat(todos, hasItems(todoItems));
+        logger.info(() -> actor.name() + " saw that the list contains " + Arrays.toString(todoItems));
+    }
+}

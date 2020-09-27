@@ -1,0 +1,17 @@
+package screenplay.pages;
+
+import org.openqa.selenium.By;
+
+public enum FACPageElements {
+	NOMEDAEMPRESA_FIELD(By.id("nomeEmpresa")),
+	
+    private By locator = null;
+
+	FACPageElements(By locator) {
+        this.locator = locator;
+    }
+
+    public By locator() {
+        return locator;
+    }
+}

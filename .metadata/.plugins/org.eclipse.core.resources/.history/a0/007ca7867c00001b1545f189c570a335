@@ -1,0 +1,14 @@
+package screenplay.pages;
+
+import org.openqa.selenium.By;
+
+public class FAPPageElements {
+	public static By COOKIES_BTN = (By.id("barra-cookie"));
+	public static By NOMEDAEMPRESA_FIELD = (By.id("nomeEmpresa"));
+	public static By FAP_FIELD = (By.id("fap"));
+	public static By RAT_FIELD = (By.cssSelector("#frmcalculadora > div.col-sm-12 > div:nth-child(3) > span > div > div.selectric > b"));
+	public static By RAT_FIELD_3 = (By.cssSelector("#frmcalculadora > div.col-sm-12 > div:nth-child(3) > span > div > div.selectric-items > div > ul > li:nth-child(3)"));
+	public static By PROJECAO_FIELD = (By.id("projecao"));
+ 
+    }
+}

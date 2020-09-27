@@ -1,0 +1,52 @@
+package screenplay.tests;
+
+import java.io.IOException;
+import java.util.concurrent.TimeUnit;
+
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+
+import cucumber.api.java.After;
+import cucumber.api.java.Before;
+import cucumber.api.java.en.Given;
+
+import screenplay.models.Actor;
+//import screenplay.abilities.UsesChrome;
+
+public class FillFormFAPSP {
+	
+	public WebDriver driver;
+	String urlFAP = "http://ww2.soc.com.br/fap/";
+	
+
+	
+	@Before
+	public void initializeFAP() throws IOException {
+		System.setProperty("webdriver.chrome.driver", ".\\src\\test\\resources\\driver\\chrome\\85\\chromedriver.exe");
+		driver = new ChromeDriver();
+		driver.manage().window().maximize();
+		driver.manage().timeouts().implicitlyWait(50000, TimeUnit.MILLISECONDS);
+		driver.get(urlFAP);
+
+	}
+	
+	@After
+	public void terminateFAP() {
+		driver.quit();
+	}
+	
+	Actor soc = new Actor("Soc");//.whoCan(UsesChrome(urlFAP)));
+	
+	@Given("^I am FAP Page$")
+	public void i_am_FAP_Page() {
+		System.out.println("ola");
+		
+		
+		
+	}
+	
+	
+	
+	
+
+}

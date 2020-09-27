@@ -1,0 +1,14 @@
+package screenplay.questions;
+
+public class TheFAPForm {
+	
+	public static TheFAPFormTxt textIs(String expectedText) {
+        return new TheTodoListTxt(expectedText);
+	
+        public static TheFAPFormContents contentsHave(String... formItems) {
+            return new TheFAPFormContents(formItems);
+        }
+
+}
+
+

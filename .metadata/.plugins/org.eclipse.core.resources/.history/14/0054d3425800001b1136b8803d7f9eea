@@ -1,0 +1,17 @@
+package screenplay.questions;
+
+public class TheFAPForm {
+
+	public static TheFAPFormTxt textIs(String expectedText) {
+		return new TheFAPFormTxt(expectedText);
+	}
+
+	public static TheFAPFormTitle textIs(String expectedText) {
+		return new TheFAPFormTitle(expectedText);
+	}
+
+	public static TheFAPFormContents contentsHave(String... formItems) {
+		return new TheFAPFormContents(formItems);
+	}
+
+}

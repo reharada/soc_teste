@@ -1,0 +1,17 @@
+
+#Author: regiane.ha@gmail.com
+
+@CookiesButtonFAPPAGE
+#Feature: Click on Cookies Button
+#Background: Accepted Cookies
+#	Given I am FAP Page
+#	Given I accepted cookies
+
+
+  @scenarioFindFAP
+  Scenario: Fill form FAP page  
+  Given I am FAP Page   
+  Given I accepted cookies
+     Given I fill the getCalc
+#    When I click to Estimular
+#    Then I see the report

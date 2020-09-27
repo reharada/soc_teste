@@ -1,0 +1,41 @@
+package pageobjects.pages;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+
+import cucumber.api.java.en.Given;
+
+public class FillFormFAPPage {
+protected static WebDriver driver;
+	
+	public FillFormFAPPage(WebDriver driver) {
+		this.driver = driver;
+	}
+	
+	//@Given("^I am FAP Page$") 
+	private String titleEsperado = "FAP - SOC - Software Integrado de Gestão Ocupacional";
+
+	public String getTitleEsperado() {
+		return titleEsperado;
+	}
+	public String getTitleFAPPage() {
+		return driver.getTitle();
+	}
+
+	//@Given("^I accepted FAP cookies$")
+	private By btnAceitar = By.id("barra-cookie");
+
+	public By getBtnAceitar() {
+		return btnAceitar;
+	}
+	public Boolean getBtnAceitarBool() {
+		return driver.findElement(getBtnAceitar()).isDisplayed();
+	}
+	
+	public void btnAceitarClick() {
+		driver.findElement(getBtnAceitar()).click();
+	}
+	
+	
+
+}

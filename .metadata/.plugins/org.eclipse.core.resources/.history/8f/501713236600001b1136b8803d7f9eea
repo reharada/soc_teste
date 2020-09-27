@@ -1,0 +1,21 @@
+package screenplay.pages;
+
+import org.openqa.selenium.By;
+
+public enum FACPageElements {
+	NOMEDAEMPRESA_FIELD(By.id("nomeEmpresa")),
+	FAP_FIELD(By.id("fap")),
+	RAT_FIELD(By.cssSelector("#frmcalculadora > div.col-sm-12 > div:nth-child(3) > span > div > div.selectric > b")),
+	RAT_FIELD_3(By.cssSelector("#frmcalculadora > div.col-sm-12 > div:nth-child(3) > span > div > div.selectric-items > div > ul > li:nth-child(3)")),
+	PROJECAO_FIELD(By.id("projecao"));
+	
+    private By locator = null;
+
+	FACPageElements(By locator) {
+        this.locator = locator;
+    }
+
+    public By locator() {
+        return locator;
+    }
+}

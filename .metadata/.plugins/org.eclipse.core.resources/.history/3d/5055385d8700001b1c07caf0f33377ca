@@ -1,0 +1,12 @@
+package pageobjects.pages;
+
+import org.openqa.selenium.WebDriver;
+
+public class ReportFAPPage {
+protected static WebDriver driver;
+	
+	public ReportFAPPage(WebDriver driver) {
+		this.driver = driver;
+	}
+
+}

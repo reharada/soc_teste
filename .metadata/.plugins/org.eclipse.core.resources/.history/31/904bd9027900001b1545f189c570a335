@@ -1,0 +1,5 @@
+package screenplay.tasks;
+
+public class ClickCookiesBtn {
+
+}

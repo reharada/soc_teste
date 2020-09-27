@@ -1,0 +1,16 @@
+package screenplay.questions;
+
+import org.openqa.selenium.WebDriver;
+
+public class TheTitlePage {
+protected static WebDriver driver;
+	
+	public TheTitlePage(WebDriver driver) {
+		this.driver = driver;
+	}
+	
+	public String whatPageNameIs() {
+		return driver.getTitle();
+	}
+
+}

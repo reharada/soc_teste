@@ -1,0 +1,27 @@
+package screenplay.tasks;
+
+import org.openqa.selenium.Keys;
+import org.openqa.selenium.WebDriver;
+
+import screenplay.models.Actor;
+import screenplay.models.Task;
+import static screenplay.pages.FACPageElements.NOMEDAEMPRESA_FIELD;
+
+public class FillFormEmpresa implements Task {
+	
+    private String empresaText;
+
+    public FillFormEmpresa(final String empresaText) {
+        this.empresaText = empresaText;
+    }
+
+    public static FillFormEmpresa called(String empresaText) {
+        return new FillFormEmpresa(empresaText);
+    }
+
+    @Override
+    public void perform(WebDriver driver, Actor actor) {
+        driver.findElement(NOMEDAEMPRESA_FIELD.locator()).sendKeys(empresaText, Keys.ENTER);
+        logger.info(() -> actor.name() + " added Nome da Empresa called '" + empresaText + "'");
+    }
+}

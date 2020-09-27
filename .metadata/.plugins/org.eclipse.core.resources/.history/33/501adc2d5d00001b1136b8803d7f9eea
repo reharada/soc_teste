@@ -1,0 +1,33 @@
+package screenplay.questions;
+
+import static org.hamcrest.Matchers.equalTo;
+import static org.junit.Assert.assertEquals;
+
+import org.openqa.selenium.WebDriver;
+
+import screenplay.models.Actor;
+import screenplay.models.Question;
+
+public class TheFAPFormTitle implements Question {
+	
+	static WebDriver driver;
+	String expectedName ="FAP - SOC - Software Integrado de Gestão Ocupacional" ;
+	static String obtainedName;
+	
+	public TheFAPFormTitle (String obtainedName) {
+		TheFAPFormTitle.obtainedName = obtainedName;
+	}
+	
+	public static TheFAPFormTitle WhatPageNameIs(WebDriver driver) {
+		return new TheFAPFormTitle(driver.getTitle());
+	}
+	
+	@Override
+	public void ask(final WebDriver driver, final Actor actor) {
+		this.driver = driver;
+		TheFAPFormTitle whatPageNameIs = this.WhatPageNameIs(this.driver);
+		assertEquals(expectedName, equalTo(whatPageNameIs));
+		logger.info(() -> actor.name() + " the Page Name expected is " + whatPageNameIs);
+	}
+
+}

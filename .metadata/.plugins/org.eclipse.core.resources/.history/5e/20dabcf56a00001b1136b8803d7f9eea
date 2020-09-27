@@ -1,0 +1,30 @@
+package screenplay.tasks;
+
+import screenplay.models.Actor;
+import screenplay.models.Task;
+
+import static screenplay.pages.FACPageElements.*;
+
+import org.openqa.selenium.WebDriver;
+
+public class FillForm implements Task {
+	
+	    private String formText;
+
+	    public FillForm(final String formText) {
+	        this.formText = formText;
+	    }
+
+	    public static FillForm called(String formText) {
+	        return new FillForm(formText);
+	    }
+
+	    @Override
+	    public void perform(WebDriver driver, Actor actor) {
+	        driver.findElement(TODO_FIELD.locator()).sendKeys(todoText, Keys.ENTER);
+	        logger.info(() -> actor.name() + " added a todo list item called '" + todoText + "'");
+	    }
+	}
+
+
+}

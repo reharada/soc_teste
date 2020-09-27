@@ -1,0 +1,5 @@
+package screenplay.abilities;
+
+public class UsesChrome {
+
+}

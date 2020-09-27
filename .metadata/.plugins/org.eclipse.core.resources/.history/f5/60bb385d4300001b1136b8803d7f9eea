@@ -1,0 +1,9 @@
+package screenplay.questions;
+
+public class TheTitlePage {
+	
+	public String whatPageNameIs() {
+		return driver.getTitle();
+	}
+
+}

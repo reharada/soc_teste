@@ -1,0 +1,32 @@
+package screenplay.tasks;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
+import org.openqa.selenium.WebDriver;
+
+import screenplay.models.Actor;
+import screenplay.models.Task;
+import static screenplay.pages.FAPPageElements.FAP_FIELD;
+
+public class FillFormFAP {
+	
+	 private String faptext;
+
+	    public FillFormFAP(final String faptext) {
+	        this.faptext = faptext;
+	    }
+
+	    public static FillFormEmpresa called(String faptext) {
+	        return new FillFormEmpresa(faptext);
+	    }
+
+	    @Override
+	    public void perform(WebDriver driver, Actor actor) {
+	    	//System.out.println("titulo aqui2 " + driver.getTitle());
+	        driver.findElement((By.id("nomeEmpresa"))).sendKeys(fapText);
+	    	logger.info(() -> actor.name() + " clicked on Cookies Button. ");
+	    }
+	
+	
+
+}
