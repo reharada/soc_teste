@@ -12,7 +12,6 @@
 <fullyQualifiedTypeName name="org.openqa.selenium.By"/>
 <fullyQualifiedTypeName name="cucumber.api.java.en.When"/>
 <fullyQualifiedTypeName name="cucumber.api.java.en.Then"/>
-<fullyQualifiedTypeName name="org.openqa.selenium.WebElement"/>
 <fullyQualifiedTypeName name="screenplay.models.Task"/>
 <fullyQualifiedTypeName name="screenplay.models.Actor"/>
 <fullyQualifiedTypeName name="org.openqa.selenium.Keys"/>
@@ -24,4 +23,6 @@
 <fullyQualifiedTypeName name="cucumber.api.java.Before"/>
 <fullyQualifiedTypeName name="cucumber.api.java.After"/>
 <fullyQualifiedTypeName name="org.junit.After"/>
+<fullyQualifiedTypeName name="pageobjects.pages.FillFormFAPPage"/>
+<fullyQualifiedTypeName name="org.openqa.selenium.WebElement"/>
 </qualifiedTypeNameHistroy>
